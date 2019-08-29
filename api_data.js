@@ -28,7 +28,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -X POST \\\nhttps://driveranalytics.com.br/api/auth/local \\\n-H 'Content-Type: application/json' \\\n-d '{\n\"username\": \"contato@motoratech.com\",\n\"password\": \"admin123\"\n}'",
+        "content": "curl -X POST \\\nhttps://driveranalytics.com.br/api/auth/local \\\n-H 'Content-Type: application/json' \\\n-d '{\n\"username\": \"vabmobiledev@motoratech.com\",\n\"password\": \"xxxxxx\"\n}'",
         "type": "curl"
       }
     ],
@@ -61,7 +61,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response",
-          "content": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDkxNDUwfQ.nHxgfer6hD9RcxIy66eDSNVsBMtzaE86ZrHVddTSFC4\",\n   \"user\": {\n       \"id\": \"5d67e2101b90f33642106daa\",\n       \"email\": \"vabmobiledev@motoratech.com\",\n       \"name\": \"Dev\",\n       \"company\": {\n           \"id\": \"5d67e1d41b90f33642106d75\",\n           \"name\": \"Vab Mobile\",\n           \"desc\": \"Vab Mobile\",\n           \"initials\": \"VABM\",\n           \"config\": \"5d67e1d41b90f33642106d74\",\n           \"createdAt\": \"2019-08-29T14:31:48.244Z\",\n           \"updatedAt\": \"2019-08-29T14:31:48.244Z\",\n           \"active\": true\n       },\n       \"role\": \"manager\",\n       \"receiveEmail\": true\n   },\n   \"timestamp\": 1567091450693\n}",
+          "content": "{\n   \"token\": \"eyJhbGciOiJIUzI1NiI13fR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEw13I5MGYzMzY0MjEwNmRhYSIsIm53bWUiOiJEZ1YiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDkxNDUwfQ.nHxgfer6hD9RcxIy66eDSNVsBMtzaE86ZrHVddTSFC4\",\n   \"user\": {\n       \"id\": \"5d67e2101b90f33642106daa\",\n       \"email\": \"vabmobiledev@motoratech.com\",\n       \"name\": \"Dev\",\n       \"company\": {\n           \"id\": \"5d67e1d41b90f33642106d75\",\n           \"name\": \"Vab Mobile\",\n           \"desc\": \"Vab Mobile\",\n           \"initials\": \"VABM\",\n           \"config\": \"5d67e1d41b90f33642106d74\",\n           \"createdAt\": \"2019-08-29T14:31:48.244Z\",\n           \"updatedAt\": \"2019-08-29T14:31:48.244Z\",\n           \"active\": true\n       },\n       \"role\": \"manager\",\n       \"receiveEmail\": true\n   },\n   \"timestamp\": 1567091450693\n}",
           "type": "json"
         }
       ]
