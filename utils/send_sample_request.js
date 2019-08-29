@@ -12,8 +12,7 @@ define([
           var group = $root.data("group");
           var name = $root.data("name");
           var version = $root.data("version");
-          var contentType = $root.data("contenttype");
-          sendSampleRequest(group, name, version, $(this).data("sample-request-type"), contentType);
+          sendSampleRequest(group, name, version, $(this).data("sample-request-type"));
       });
 
       // Button clear
@@ -28,7 +27,7 @@ define([
       });
   }; // initDynamic
 
-  function sendSampleRequest(group, name, version, type, contentType)
+  function sendSampleRequest(group, name, version, type)
   {
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
@@ -51,7 +50,9 @@ define([
       var paramType = {};
       $root.find(".sample-request-param:checked").each(function(i, element) {
           var group = $(element).data("sample-request-param-group-id");
-          $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
+          $root.find("[data-sample-request-param-group=\"" + group + "\"]").not(function(){
+            return $(this).val() == "" && $(this).is("[data-sample-request-param-optional='true']");
+          }).each(function(i, element) {
             var key = $(element).data("sample-request-param-name");
             var value = element.value;
             if ( ! element.optional && element.defaultValue !== '') {
@@ -82,29 +83,15 @@ define([
       $root.find(".sample-request-response-json").html("Loading...");
       refreshScrollSpy();
 
-
-      if (!contentType && header['Content-Type']) {
-          contentType = header['Content-Type'];
-      }
-      else if(!contentType) {
-          //default
-          contentType = 'application/x-www-form-urlencoded; charset=UTF-8'
-      }
-      header['Content-Type']=contentType;
-      if (contentType == 'application/json') {
-          param = JSON.stringify(param)
-      }
-      else {
-          _.each( param, function( val, key ) {
-              var t = paramType[ key ].toLowerCase();
-              if ( t === 'object' || t === 'array' ) {
-                  try {
-                      param[ key ] = JSON.parse( val );
-                  } catch (e) {
-                  }
+      _.each( param, function( val, key ) {
+          var t = paramType[ key ].toLowerCase();
+          if ( t === 'object' || t === 'array' ) {
+              try {
+                  param[ key ] = JSON.parse( val );
+              } catch (e) {
               }
-          });
-      }
+          }
+      });
 
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
@@ -113,7 +100,6 @@ define([
           data       : param,
           type       : type.toUpperCase(),
           success    : displaySuccess,
-          contentType: contentType,
           error      : displayError
       };
 
