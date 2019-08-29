@@ -28,7 +28,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "curl -X POST \\\nhttp://localhost:9000/api/auth/local \\\n-H 'Content-Type: application/json' \\\n-d '{\n\"username\": \"contato@motoratech.com\",\n\"password\": \"admin123\"\n}'",
+        "content": "curl -X POST \\\nhttps://driveranalytics.com.br/api/auth/local \\\n-H 'Content-Type: application/json' \\\n-d '{\n\"username\": \"contato@motoratech.com\",\n\"password\": \"admin123\"\n}'",
         "type": "curl"
       }
     ],
