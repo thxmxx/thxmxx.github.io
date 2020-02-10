@@ -422,6 +422,416 @@
   },
   {
     "type": "post",
+    "url": "/companies",
+    "title": "Create Company",
+    "name": "CreateCompany",
+    "group": "Company",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Nome da empresa.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "desc",
+            "description": "<p>Descrição da empresa.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "initials",
+            "description": "<p>Iniciais da empresa.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "company",
+            "description": "<p>Company's data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": " {\n    \"id\": \"5e415c8a7c66c3592cf5c6cd\",\n    \"name\": \"Teste\",\n    \"desc\": \"Teste Company\",\n    \"initials\": \"T\",\n    \"config\": \"5e415c8a7c66c3592cf5c6cc\",\n    \"createdAt\": \"2020-02-10T13:37:14.621Z\",\n    \"updatedAt\": \"2020-02-10T13:37:14.621Z\",\n    \"active\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -X POST \\\n  https://driveranalytics.com.br/api/companies/ \\\n  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDg5MjkzfQ.PUGy6lPKFz1Kt9Z_pcOOahtCUMjvwSYTIrZdYgGa3xE' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/json' \\\n  -d '{\n\t\"name\": \"Teste\"\t,\n\t\"desc\": \"Teste Company\",\n\t\"initials\": \"T\"\n}'",
+        "type": "curl"
+      }
+    ],
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Company not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/company/index.js",
+    "groupTitle": "Company"
+  },
+  {
+    "type": "delete",
+    "url": "/companies/:id",
+    "title": "Delete company",
+    "name": "DeleteCompany",
+    "group": "Company",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 204": [
+          {
+            "group": "Success 204",
+            "optional": false,
+            "field": "204",
+            "description": "<p>No Content.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Company not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/company/index.js",
+    "groupTitle": "Company"
+  },
+  {
+    "type": "get",
+    "url": "/companies",
+    "title": "Retrieve companies",
+    "name": "RetrieveCompanies",
+    "group": "Company",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Total amount of companies.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "rows",
+            "description": "<p>List of companies.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/company/index.js",
+    "groupTitle": "Company",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "q",
+            "description": "<p>Query to search.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "page",
+            "defaultValue": "1",
+            "description": "<p>Page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "30",
+            "description": "<p>Amount of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "sort",
+            "defaultValue": "-createdAt",
+            "description": "<p>Order of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "fields",
+            "description": "<p>Fields to be returned.</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/companies/:id",
+    "title": "Retrieve company",
+    "name": "RetrieveCompany",
+    "group": "Company",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -X GET \\\n  https://driveranalytics.com.br/api/companies/5e415cd0764fa95b0d8439ac \\\n  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDkzNjg4fQ.foxGxKbHWm75Jt34NFJw7our9-sWpy2XpQU7-o_R2Gk' \\\n  -H 'Content-Type: application/json'",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "company",
+            "description": "<p>Company's data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "{\n    \"id\": \"5e415cd0764fa95b0d8439ac\",\n    \"name\": \"Teste\",\n    \"desc\": \"Teste Company\",\n    \"initials\": \"T\",\n    \"config\": \"5e415cd0764fa95b0d8439ab\",\n    \"createdAt\": \"2020-02-10T13:38:24.436Z\",\n    \"updatedAt\": \"2020-02-10T13:38:24.436Z\",\n    \"active\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Company not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/company/index.js",
+    "groupTitle": "Company"
+  },
+  {
+    "type": "put",
+    "url": "/companies/:id",
+    "title": "Update company",
+    "name": "UpdateCompany",
+    "group": "Company",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Nome da empresa.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "desc",
+            "description": "<p>Descrição da empresa.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "initials",
+            "description": "<p>Iniciais da empresa.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "company",
+            "description": "<p>Company's data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "{\n    \"id\": \"5e415cd0764fa95b0d8439ac\",\n    \"name\": \"Teste\",\n    \"desc\": \"Teste Desc\",\n    \"initials\": \"T\",\n    \"config\": \"5e415cd0764fa95b0d8439ab\",\n    \"createdAt\": \"2020-02-10T13:38:24.436Z\",\n    \"updatedAt\": \"2020-02-10T14:46:59.608Z\",\n    \"active\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -X PUT \\\nhttps://driveranalytics.com.br/api/companies/5e415cd0764fa95b0d8439ac \\\n-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDg5MjkzfQ.PUGy6lPKFz1Kt9Z_pcOOahtCUMjvwSYTIrZdYgGa3xE' \\\n-H 'cache-control: no-cache' \\\n-H 'content-type: application/json' \\\n-d '{\n\"desc\": \"Teste Desc\"\n}'",
+        "type": "curl"
+      }
+    ],
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>Company not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/company/index.js",
+    "groupTitle": "Company"
+  },
+  {
+    "type": "post",
     "url": "/drivers",
     "title": "Create driver",
     "name": "CreateDriver",
@@ -1506,6 +1916,471 @@
     "version": "0.0.0",
     "filename": "src/api/travel/index.js",
     "groupTitle": "Travel"
+  },
+  {
+    "type": "post",
+    "url": "/users",
+    "title": "Create User",
+    "name": "CreateUser",
+    "group": "User",
+    "permission": [
+      {
+        "name": "admin, manager"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email do Usuário.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Nome do Usuário.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "receiveEmail",
+            "description": "<p>Flag para ativar recebimento de email com alertas de Viagem.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "role",
+            "description": "<p>Papel do usuário: 'admin', 'manager', 'user', 'device'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>Senha do Usuário.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "company",
+            "description": "<p>Id da empresa do qual o usuário será cadastrado.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "user",
+            "description": "<p>User's data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "{\n  \"id\": \"5e41a2ae7399d6354048bd52\",\n  \"email\": \"teste@teste.com\",\n  \"name\": \"Teste\",\n  \"company\": {\n      \"id\": \"5e41a05a2d2c392c387f9c4b\"\n  },\n  \"role\": \"user\",\n  \"receiveEmail\": false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -X POST \\\n  https://driveranalytics.com.br/api/users/ \\\n  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDg5MjkzfQ.PUGy6lPKFz1Kt9Z_pcOOahtCUMjvwSYTIrZdYgGa3xE' \\\n  -H 'cache-control: no-cache' \\\n  -H 'content-type: application/json' \\\n  -d '{\n\t\"email\": \"teste@teste.com\",\n\t\"name\": \"Teste\",\n\t\"receiveEmail\": \"false\",\n\t\"role\": \"user\",\n\t\"password\": \"teste123\",\n\t\"company\": \"5e41a05a2d2c392c387f9c4b\"\n  }'",
+        "type": "curl"
+      }
+    ],
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>User not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin, manager access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/user/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "delete",
+    "url": "/users/:id",
+    "title": "Delete user",
+    "name": "DeleteUser",
+    "group": "User",
+    "permission": [
+      {
+        "name": "admin",
+        "title": "Admin access only",
+        "description": "<p>You must pass <code>access_token</code> parameter or a Bearer Token authorization header to access this endpoint.</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 204": [
+          {
+            "group": "Success 204",
+            "optional": false,
+            "field": "204",
+            "description": "<p>No Content.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>User not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/user/index.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "/users/me",
+    "title": "Retrieve logger user info",
+    "name": "RetrieveUserInfo",
+    "group": "User",
+    "permission": [
+      {
+        "name": "user",
+        "title": "User access only",
+        "description": "<p>You must pass Bearer <code>token</code> authorization header to access this endpoint.</p>"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "User",
+            "description": "<p>Info.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>user access.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/user/index.js",
+    "groupTitle": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "q",
+            "description": "<p>Query to search.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "page",
+            "defaultValue": "1",
+            "description": "<p>Page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "30",
+            "description": "<p>Amount of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "sort",
+            "defaultValue": "-createdAt",
+            "description": "<p>Order of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "fields",
+            "description": "<p>Fields to be returned.</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
+    "url": "/users",
+    "title": "Retrieve users",
+    "name": "RetrieveUsers",
+    "group": "User",
+    "permission": [
+      {
+        "name": "admin, manager"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "count",
+            "description": "<p>Total amount of Users.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Object[]",
+            "optional": false,
+            "field": "rows",
+            "description": "<p>List of Users.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin, manager access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/user/index.js",
+    "groupTitle": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "q",
+            "description": "<p>Query to search.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "page",
+            "defaultValue": "1",
+            "description": "<p>Page number.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1..999...",
+            "optional": true,
+            "field": "limit",
+            "defaultValue": "30",
+            "description": "<p>Amount of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "sort",
+            "defaultValue": "-createdAt",
+            "description": "<p>Order of returned items.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String[]",
+            "optional": true,
+            "field": "fields",
+            "description": "<p>Fields to be returned.</p>"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "put",
+    "url": "/users/:id",
+    "title": "Update User",
+    "name": "UpdateUser",
+    "group": "User",
+    "permission": [
+      {
+        "name": "admin, manager"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email do Usuário.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Nome do Usuário.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "receiveEmail",
+            "description": "<p>Flag para ativar recebimento de email com alertas de Viagem.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "role",
+            "description": "<p>Papel do usuário: 'admin', 'manager', 'user', 'device'.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "company",
+            "description": "<p>Id da empresa do qual o usuário será cadastrado.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "user",
+            "description": "<p>User's data.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response",
+          "content": "{\n  \"id\": \"5e41a2ae7399d6354048bd52\",\n  \"email\": \"testemod@teste.com\",\n  \"name\": \"Teste Mod\",\n  \"company\": {\n      \"id\": \"5e41a05a2d2c392c387f9c4b\"\n  },\n  \"role\": \"manager\",\n  \"receiveEmail\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "curl -X PUT \\\nhttps://driveranalytics.com.br/api/users/5e41a2ae7399d6354048bd52 \\\n-H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjdlMjEwMWI5MGYzMzY0MjEwNmRhYSIsIm5hbWUiOiJEZXYiLCJjb21wYW55Ijp7InVwZGF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsImNyZWF0ZWRBdCI6IjIwMTktMDgtMjlUMTQ6MzE6NDguMjQ0WiIsIm5hbWUiOiJWYWIgTW9iaWxlIiwiZGVzYyI6IlZhYiBNb2JpbGUiLCJpbml0aWFscyI6IlZBQk0iLCJjb25maWciOiI1ZDY3ZTFkNDFiOTBmMzM2NDIxMDZkNzQiLCJfX3YiOjAsImtleXdvcmRzIjpbInZhYiBtb2JpbGUiXSwiYWN0aXZlIjp0cnVlLCJpZCI6IjVkNjdlMWQ0MWI5MGYzMzY0MjEwNmQ3NSJ9LCJyb2xlIjoibWFuYWdlciIsInRoZW1lIjoiZGlhIiwiaWF0IjoxNTY3MDg5MjkzfQ.PUGy6lPKFz1Kt9Z_pcOOahtCUMjvwSYTIrZdYgGa3xE' \\\n-H 'cache-control: no-cache' \\\n-H 'content-type: application/json' \\\n-d '{\n\t\"email\": \"testemod@teste.com\",\n\t\"name\": \"Teste Mod\",\n\t\"receiveEmail\": \"true\",\n\t\"role\": \"manager\",\n\t\"company\": \"5e41a05a2d2c392c387f9c4b\"\n}'",
+        "type": "curl"
+      }
+    ],
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "Object",
+            "optional": false,
+            "field": "400",
+            "description": "<p>Some parameters may contain invalid values.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "404",
+            "description": "<p>User not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "401",
+            "description": "<p>admin, manager access only.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "src/api/user/index.js",
+    "groupTitle": "User"
   },
   {
     "type": "post",
